@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - GymTracker</title>
+    <link rel="stylesheet" href="../assets/css/cadastro.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+    </style>
+</head>
+<body>
+    <div id="container-cadastro">
+        <div class="caixa-logo"></div>
+        <div id="subcontainer-cadastro">
+            <h2>Cadastro</h2>
+            <form action="/usuario/cadastro" method="POST" id="form-cadastro">
+                <div class="campo-cadastro">
+                    <label for="nome-cadastro">Nome:</label><br>
+                    <input type="text" id="nome-cadastro" name="nome" required><br>
+                </div>
+                <div class="campo-cadastro">
+                    <label for="email-cadastro">Email:</label><br>
+                    <input type="text" id="email-cadastro" name="login" required><br>
+                </div>
+                <div class="campo-cadastro">
+                    <label for="senha-cadastro">Senha:</label><br>
+                    <input type="password" id="senha-cadastro" name="senha" required><br>
+                </div>
+                <div class="campo-cadastro btn-cadastro">
+                    <input type="submit" value="Cadastrar" id="btn-cadastrar">
+                </div>
+                <div class="campo-link">
+                    <a href="Login.html">Ir para tela de login</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

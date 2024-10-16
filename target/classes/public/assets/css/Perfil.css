@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    background-color: #1a1a1a;
+}
+
+img.logo {
+    margin-left: 20px;
+}
+
+nav.navbar {
+    background-color: #2c2c2c;
+    box-shadow: 0 1px 2px #ff6600;
+    color: #fff;
+    padding: 10px 0;
+    top: 0;
+    transition: all 0.3 ease-in-out;
+}
+
+div.container-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transition: all 0.3 ease-in-out;
+    justify-content: space-between;
+    height: 10vh;
+}
+
+.nav-links {
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+}
+
+.nav-links li {
+    margin: 40px;
+}
+
+.nav-links li a {
+    display: inline-block;
+    color: #fff;
+    font-size: x-large;
+    text-decoration: none;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.nav-links li a:hover {
+    text-decoration: underline;
+    transform: scale(1.3);
+    text-underline-offset: 10px;
+    opacity: 1;
+}
+
+.mobile-menu{
+    cursor: pointer;
+    display: none;
+}
+
+.mobile-menu div{
+    width: 32px;
+    height: 2px;
+    background-color: #fff;
+    margin: 8px;
+    transition: 0.3s;
+}
+
+@media screen and (max-width: 800px) {
+    body{
+        overflow-x: hidden;
+    }
+    .nav-links {
+        position: absolute;
+        top: 8vh;
+        right: 0;
+        width: 50vw;
+        height: 92vh;
+        background: #2c2c2c;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in;
+    }
+    .nav-links li {
+        margin-left: 0;
+        opacity: 0;
+    }
+    .mobile-menu {
+        display: block;
+    }
+}
+
+.nav-links.active{
+    transform: translateX(0%);
+}
+
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    } to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.mobile-menu.active .line1 {
+    transform: rotate(-45deg) translate(-8px, 8px);
+  }
+  
+  .mobile-menu.active .line2 {
+    opacity: 0;
+  }
+  
+  .mobile-menu.active .line3 {
+    transform: rotate(45deg) translate(-5px, -7px);
+  }
+
+:root {
+    --laranja-gt: #ff6600;
+}
+
+#container-cadastro { /*Container do cadastro*/
+    color: white;
+    display: flex; /*Ativar flexbox (ativa somente para os filhos diretos da classe/id especificada)*/
+    flex-direction: column;
+    /*Para que a direção do flex seja em coluna (empilhado)*/
+    /*
+    O flex-direction padrão é de row
+
+    align-items: Alinhar verticalmente (direção block)
+    justify-content: Alinhar horizontalmente (direção inline)
+    
+    No entanto, ao usar flex-direction: column, essas funções são invertidas, como se as tags fossem giradas em 90 graus.
+    */
+    align-items: center;
+    justify-content: center;
+}
+
+/*Início caixa cadastro*/
+
+#subcontainer-cadastro {
+    background-color: #2c2c2c;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-style: solid;
+    border-color: var(--laranja-gt);
+    border-width: 2px;
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 50px;
+    box-shadow: 0px 0px 5px 3px #4b4b4b;
+}
+#subcontainer-cadastro h2 {
+    margin-top: 0px;
+}
+
+/*Fim*/
+
+#form-cadastro label { /*Nomes dos campos*/
+    font-weight: bold;
+}
+
+#form-cadastro input { /*Campos de informação*/
+    border-color: #ff6600;
+    border-style: solid;
+    border-radius: 5px;
+    background-color: #525252;
+    color: white;
+    padding: 5px;
+}
+
+#form-cadastro input:focus-visible { /*Pra tirar a outline ciana que aparece quando clica*/
+    outline: none;
+}
+
+#form-cadastro .campo-cadastro.btn-cadastro { /*Div do botão de cadastrar*/
+    /*Flexbox precisa ser aplicado na div que você quer que se torne uma flexbox, por isso não adiantaria eu colocar display: flex no seletor abaixo desse.*/
+    display: flex;
+    justify-content: center; /*Alinhas horizontalmente (direção inline)*/
+    margin-top: 15px;
+    height: 35px;
+}
+
+/*Inicio estilização botão de cadastrar*/
+
+#form-cadastro #btn-cadastrar {
+    color: white;
+    font-weight: bold;
+    background-color: var(--laranja-gt);
+    border-style: solid;
+    border-color: var(--laranja-gt);
+    width: 100%;
+}
+
+#form-cadastro #btn-cadastrar:active { /*Quando o botão for clicado*/
+    border-color: white;
+    font-size: small;
+}
+
+/*Fim*/
+
+/*Início estilazação do link*/
+
+.campo-link {
+    text-align: center;
+}
+
+.campo-link a {
+    font-size: small;
+    text-decoration: none;
+}
+
+.campo-link a:link { /*Seletor do link*/
+    color: white;
+}
+
+.campo-link a:visited { /*Seletor do link*/
+    color: white;
+}
+
+.campo-link a:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/*Fim*/
+
+.campo-cadastro { /*Classe para cada campo*/
+    margin-bottom: 10px;
+}
+
+/*Animacao botao cadastrar*/
+
+#form-cadastro #btn-cadastrar:hover {
+    background-color: #ff812d;
+    border-color: #ff812d;
+    cursor: pointer;
+}
+
+/*fim animacao*/
