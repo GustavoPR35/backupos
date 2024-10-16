@@ -1,0 +1,217 @@
+:root {
+    --laranja-gt: #ff6600;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #1a1a1a;
+    margin: 0px;
+    color: white;
+}
+
+/* Navbar antiga 
+
+.topo-voltar {
+    background-color: #ff6600;
+    border-bottom: solid;
+    border-color: white;
+    box-sizing: border-box;
+    padding: 10px;
+    position: sticky;
+    top: 0;
+    width: 100%; /* Largura total */ /*
+    z-index: 1; /* Garante que fique acima do restante */
+
+    /*Só pra deixar o ícone na parte direita*/ /*
+    display: flex;
+    justify-content: flex-end;
+}
+
+*/
+
+/*Navbar nova*/
+
+header {
+    background-color: #2c2c2c;
+    padding: 15px 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.container-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.back-button {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    color: #ff6600;
+    cursor: pointer;
+}
+
+/*Fim Navbar nova*/
+
+i.fa-solid {
+    color: white;
+}
+
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /*100% do viewport*/
+}
+
+.container h2 {
+    margin-top: 0px;
+    
+    font-weight: bold;
+    text-align: center;
+}
+
+/*Início container com os exercícios*/
+
+.container .container-exercicios {
+    background-color: #2c2c2c;
+    border-style: solid;
+    border-color: var(--laranja-gt);
+    border-width: 2px;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0px 0px 5px 3px #4b4b4b;
+    width: 85%;
+}
+
+.exercicios {
+    border-top: solid;
+    border-bottom: solid;
+    border-color: #616161;
+    border-width: 4px;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: 200px; /*Definindo limite de altura pra poder usar o overflow*/
+    overflow-y: auto; /*Quando o número de listas ultrapassar a height definida, uma barra de scroll vertical vai ser liberada*/
+    overflow-x: hidden; /*Desativar scroll horizontal*/
+}
+
+/*
+.exercicios input[type=radio] {
+    display: none;
+}
+*/
+
+    /*Início exercícios individuais*/
+
+    .exercicios .exercicio {
+        border: solid;
+        border-color: var(--laranja-gt);
+        border-width: 3px;
+        border-radius: 5px;
+
+        background: rgb(110,110,110);
+        background: linear-gradient(180deg, rgb(116, 116, 116) 0%, rgba(82,82,82,1) 100%);
+
+        padding: 10px;
+        margin: 5px;
+        text-align: center;
+        color: rgb(182, 182, 182);
+    }
+
+    .exercicios label {
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    label.exercicio:hover {
+        cursor: pointer;
+    }
+
+    input[type="checkbox"] {
+        display: none;
+    }
+
+    input[type="checkbox"]:checked + span { /*Seleciona um <span> que é irmão direto de um <input> do tipo radio que está checked */
+        color: white;
+        font-weight: bold;
+        font-size: large;
+    }
+
+    /*Fim*/
+
+    /*Inícios botão confirmar*/
+    #btn-confirmar {
+        color: white;
+        font-weight: bold;
+        background-color: var(--laranja-gt);
+        border-style: solid;
+        border-radius: 5px;
+        border-color: var(--laranja-gt);
+        width: 100%;
+    }
+
+    #btn-confirmar:enabled:active {
+        border-color: white;
+        font-size: small;
+    }
+
+    .btn-exercs {
+        display: flex;
+        justify-content: center; /*Alinhas horizontalmente (direção inline)*/
+        margin-top: 15px;
+        height: 35px;
+    }
+
+    .container-btn input[type="submit"]:disabled {
+        background-color: #ccc;    /* Fundo cinza */
+        color: #666;               /* Texto cinza */
+        cursor: not-allowed;       /* Cursor indicando que está desativado */
+        opacity: 0.6;
+    }
+    
+    input#btn-confirmar:enabled:hover {
+        cursor: pointer;
+        background-color: #b84900;
+        border-color: #b84900;
+    }
+    /*Fim*/
+
+    /*Media query*/
+
+    /* Telas média */
+    @media (min-width: 600px) {
+        .container .container-exercicios {
+            width: 80%;
+        }
+        .exercicios {
+            height: 300px;
+        }
+    }
+
+    /* Media query para telas grandes */
+    @media (min-width: 900px) {
+        .container .container-exercicios {
+            width: 60%;
+        }
+        .exercicios {
+            height: 300px;
+        }
+    }
+
+    /* Media query para telas pequenas*/
+    @media (max-width: 599px) {
+
+    }
+    /*Fim*/
+
+/*Fim*/

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleção de Exercício - GymTracker</title>
+    <link rel="stylesheet" href="../assets/css/SelecaoExercicio.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+    </style>
+    <script src="https://kit.fontawesome.com/25359709ac.js" crossorigin="anonymous"></script>
+    <script>
+        function testeCriarArrays() {
+            let divisoes = [];  // Array principal que contém as divisões
+            let nomes = ["Peito", "Costas", "Pernas", "Braços", "Ombros", "Abdômen"];
+    
+            for(let i = 0; i < 6; i++) {
+            // Para cada divisão, cria um array de exercícios
+            let arrayExerc = [];
+        
+                for(let j = 0; j < 6; j++) {
+                    arrayExerc.push(`Exercicio ${j} da divisão de ${nomes[i]}`);
+                }
+                
+            // Adiciona o array de exercícios na divisão correspondente
+            divisoes.push(arrayExerc);
+            }
+    
+        // Exibe a estrutura criada no console
+        console.log(divisoes);
+        // Jogar pro localStorage
+        localStorage.setItem('divisoes', JSON.stringify(divisoes));
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container-nav">
+                <img src="../assets/images/LogoGymTracker.png" alt="logo" class="logo" style="width: 128px; height: 128px;" draggable="false">
+                <div class="mobile-menu">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="Home.html"><i class="fa-solid fa-house"></i></a></li>
+                    <li><a href="CadastroFicha.html"><i class="fa-solid fa-dumbbell"></i></a></li>
+                    <li><a href="Dieta.html"><i class="fa-solid fa-burger"></i></a></li>
+                    <li><a href="Perfil.html"><i class="fa-solid fa-user"></i></a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <h2>Selecione um agrupamento</h2>
+        <form action="PaginaDivisao.html" method="GET">
+            <div class="divisoes">
+                <label class="divisao d0">
+                    <input type="radio" name="divisao" value="0" onchange="this.form.submit()">
+                    <span>Peito</span>
+                </label>
+                <label class="divisao d1">
+                    <input type="radio" name="divisao" value="1" onchange="this.form.submit()">
+                    <span>Costas</span>
+                </label>
+                <label class="divisao d2">
+                    <input type="radio" name="divisao" value="2" onchange="this.form.submit()">
+                    <span>Pernas</span>
+                </label>
+                <label class="divisao d3">
+                    <input type="radio" name="divisao" value="3" onchange="this.form.submit()">
+                    <span>Braços</span>
+                </label>
+                <label class="divisao d4">
+                    <input type="radio" name="divisao" value="4" onchange="this.form.submit()">
+                    <span>Ombros</span>
+                </label>
+                <label class="divisao d5">
+                    <input type="radio" name="divisao" value="5" onchange="this.form.submit()">
+                    <span>Abdômen</span>
+                </label>
+            </div>
+        </form>
+    </div>
+    <div class="teste">
+        <button id="btn-tst-criar-arrays" onclick="testeCriarArrays()">Criar arrays pras divisões</button>
+    </div>
+</body>
+</html>

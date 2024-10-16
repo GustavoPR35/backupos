@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página da Dieta</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../assets/css/dieta.css">
+    <script src="../assets/js/dieta.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container-nav">
+                <button class="back-button" onclick="window.location.href='SelecaoDieta.html'">&#x2190;</button>
+                <h1>Nome da Dieta</h1>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="diet-info">
+            <div class="date-picker">
+                <i class="bi bi-calendar"></i>
+                <p>Dia da semana</p>
+            </div>
+            <div class="total-calories">
+                <p>Calorias Totais: <span>xxx kcal</span></p>
+            </div>
+            <div class="nutrients">
+                <div class="nutri" id="carbs">
+                    <p>Carboidratos <i class="bi bi-pencil-square edit-icon"></i></p>
+                    <span id="carbs-value">xx g</span>
+                    <input type="number" class="edit-input" id="carbs-input" style="display: none;">
+                    <button class="save-button" id="carbs-save" style="display: none;">Salvar</button>
+                </div>
+                <div class="nutri" id="proteins">
+                    <p>Proteínas <i class="bi bi-pencil-square edit-icon"></i></p>
+                    <span id="proteins-value">xx g</span>
+                    <input type="number" class="edit-input" id="proteins-input" style="display: none;">
+                    <button class="save-button" id="proteins-save" style="display: none;">Salvar</button>
+                </div>
+                <div class="nutri" id="fats">
+                    <p>Gorduras <i class="bi bi-pencil-square edit-icon"></i></p>
+                    <span id="fats-value">xx g</span>
+                    <input type="number" class="edit-input" id="fats-input" style="display: none;">
+                    <button class="save-button" id="fats-save" style="display: none;">Salvar</button>
+                </div>
+            </div>
+            <button id="scan-label">Escanear Rótulo</button>
+        </section>
+    </main>
+
+    <footer>
+        GymTracker © 2024
+    </footer>
+
+    <script src="dieta.js"></script>
+</body>
+</html>

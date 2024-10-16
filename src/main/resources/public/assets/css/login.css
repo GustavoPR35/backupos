@@ -1,0 +1,138 @@
+:root {
+    --laranja-gt: #ff6600;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #1a1a1a;
+}
+
+.caixa-logo {
+    background-image: url(../images/LogoGymTracker.png);
+    background-size: cover;
+    height: 200px;
+    width: 200px;
+    margin: 20px;
+}
+
+#container-login { /*Container do login*/
+    color: white;
+    display: flex; /*Ativar flexbox (ativa somente para os filhos diretos da classe/id especificada)*/
+    flex-direction: column;
+    /*Para que a direção do flex seja em coluna (empilhado)*/
+    /*
+    O flex-direction padrão é de row
+
+    align-items: Alinhar verticalmente (direção block)
+    justify-content: Alinhar horizontalmente (direção inline)
+    
+    No entanto, ao usar flex-direction: column, essas funções são invertidas, como se as tags fossem giradas em 90 graus.
+    */
+    align-items: center;
+    justify-content: center;
+}
+
+/*Início caixa login*/
+
+#subcontainer-login {
+    background-color: #2c2c2c;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-style: solid;
+    border-color: var(--laranja-gt);
+    border-width: 2px;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0px 0px 5px 3px #4b4b4b;
+}
+#subcontainer-login h2 {
+    margin-top: 0px;
+}
+
+/*Fim*/
+
+#form-login label { /*Nomes dos campos*/
+    font-weight: bold;
+}
+
+#form-login input { /*Campos de informação*/
+    border-color: #ff6600;
+    border-style: solid;
+    border-radius: 5px;
+    background-color: #525252;
+    color: white;
+    padding: 5px;
+}
+
+#form-login input:focus-visible { /*Pra tirar a outline ciana que aparece quando clica*/
+    outline: none;
+}
+
+#form-login .campo-login.btn-login { /*Div do botão de logar*/
+    /*Flexbox precisa ser aplicado na div que você quer que se torne uma flexbox, por isso não adiantaria eu colocar display: flex no seletor abaixo desse.*/
+    display: flex;
+    justify-content: center; /*Alinhas horizontalmente (direção inline)*/
+    margin-top: 15px;
+    height: 35px;
+}
+
+/*Inicio estilização botão de logar*/
+
+#form-login #btn-logar {
+    color: white;
+    font-weight: bold;
+    background-color: var(--laranja-gt);
+    border-style: solid;
+    border-color: var(--laranja-gt);
+    width: 100%;
+}
+
+#form-login #btn-logar:active { /*Quando o botão for clicado*/
+    border-color: white;
+    font-size: small;
+}
+
+/*Fim*/
+
+/*Início estilazação do link*/
+
+.campo-link {
+    text-align: center;
+}
+
+.campo-link a {
+    font-size: small;
+    text-decoration: none;
+}
+
+.campo-link a:link { /*Seletor do link*/
+    color: white;
+}
+
+.campo-link a:visited { /*Seletor do link*/
+    color: white;
+}
+
+.campo-link a:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/*Fim*/
+
+.campo-login { /*Classe para cada campo*/
+    margin-bottom: 10px;
+}
+
+/*Animacao botao entrar*/
+
+#form-login #btn-logar:hover {
+    background-color: #ff812d;
+    border-color: #ff812d;
+    cursor: pointer;
+}
+
+/*fim animacao*/
+

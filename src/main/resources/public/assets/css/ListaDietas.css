@@ -1,0 +1,295 @@
+:root {
+    --laranja-gt: #ff6600;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #1a1a1a;
+    color: white;
+    margin: 0px;
+}
+
+/* Navbar antiga 
+
+.topo-voltar {
+    background-color: #ff6600;
+    border-bottom: solid;
+    border-color: white;
+    box-sizing: border-box;
+    padding: 10px;
+    position: sticky;
+    top: 0;
+    width: 100%; /* Largura total */ /*
+    z-index: 1; /* Garante que fique acima do restante */
+
+    /*Só pra deixar o ícone na parte direita*/ /*
+    display: flex;
+    justify-content: flex-end;
+}
+
+*/
+
+/*Navbar nova*/
+
+header {
+    background-color: #2c2c2c;
+    padding: 15px 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.container-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.back-button {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    color: #ff6600;
+    cursor: pointer;
+}
+
+/*Fim Navbar nova*/
+
+i.fa-solid {
+    color: white;
+}
+
+/*Início container de dietas*/
+
+.container-dietas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /*100% do viewport*/
+}
+
+.container-dietas .subcontainer-dietas h2 {
+    margin-top: 0px;
+    text-align: center;
+}
+
+.container-dietas .subcontainer-dietas {
+    background-color: #2c2c2c;
+    border-style: solid;
+    border-color: var(--laranja-gt);
+    border-width: 2px;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0px 0px 5px 3px #4b4b4b;
+    width: 85%;
+}
+
+    /*Início lista das dietas*/
+    .lista-dietas {
+        border-top: solid;
+        border-bottom: solid;
+        border-color: #616161;
+        border-width: 4px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 5px;
+        padding-right: 5px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 200px; /*Definindo limite de altura pra poder usar o overflow*/
+        overflow-y: auto; /*Quando o número de listas ultrapassar a height definida, uma barra de scroll vertical vai ser liberada*/
+        overflow-x: hidden; /*Desativar scroll horizontal*/
+    }
+
+    .lista-dietas .dieta {
+        border: solid;
+        border-color: var(--laranja-gt);
+        border-width: 3px;
+        border-radius: 5px;
+
+        background: rgb(110,110,110);
+        background: linear-gradient(180deg, rgb(116, 116, 116) 0%, rgba(82,82,82,1) 100%);
+
+        padding: 10px;
+        margin: 5px;
+        text-align: center;
+        color: rgb(182, 182, 182);
+    }
+
+    /*Início inputs pro backend*/
+    .lista-dietas label {
+        box-sizing: border-box; /*border-box pro tamanho não ultrapassar o da div pai com as adições de margin e padding*/
+        width: 100%;
+    }
+
+    input[type="radio"] { /*Tirar bolinhas de escolha*/
+        display: none;
+    }
+
+    input[type="radio"]:checked + span { /*Seleciona um <span> que é irmão direto de um <input> do tipo radio que está checked */
+        color: white;
+        font-weight: bold;
+        font-size: large;
+    }
+    /*Fim*/
+      
+
+    /*Fim*/
+
+    /*Início botões */
+
+    #btn-visualizar-dieta, #btn-abrir-criacao {
+        color: white;
+        font-weight: bold;
+        background-color: var(--laranja-gt);
+        border-style: solid;
+        border-radius: 5px;
+        border-color: var(--laranja-gt);
+        width: 100%;
+    }
+
+    #btn-visualizar-dieta:enabled:active {
+        border-color: white;
+        font-size: small;
+    }
+
+    .btn-dietas, .btn-abrir-criacao {
+        display: flex;
+        justify-content: center; /*Alinhas horizontalmente (direção inline)*/
+        margin-top: 15px;
+        height: 35px;
+    }
+
+    .btn-dietas input[type="submit"]:disabled {
+        background-color: #ccc;    /* Fundo cinza */
+        color: #666;               /* Texto cinza */
+        cursor: not-allowed;       /* Cursor indicando que está desativado */
+        opacity: 0.6;
+    }
+
+    /*Fim*/
+
+    /*Media query*/
+    @media (min-width: 600px) {
+        .container-dietas .subcontainer-dietas {
+            width: 80%; /* Largura para telas médias */
+        }
+        .lista-dietas {
+            height: 300px;
+        }
+    }
+    
+    /* Media query para telas grandes */
+    @media (min-width: 900px) {
+        .container-dietas .subcontainer-dietas {
+            width: 60%; /* Largura para telas grandes */
+        }
+        .lista-dietas {
+            height: 300px;
+        }
+    }
+    /*Fim*/
+
+/*Fim*/
+
+label.dieta:hover{
+    cursor: pointer;
+}
+
+input#btn-visualizar-dieta:enabled:hover{
+    cursor: pointer;
+    background-color: #b84900;
+    border-color: #b84900;
+}
+
+#btn-abrir-criacao:hover {
+    cursor: pointer;
+    background-color: #b84900;
+    border-color: #b84900;
+}
+
+/*Container criar dieta*/
+
+#container-criar-dieta {
+    display: none;
+
+    position: fixed;
+    z-index: 127;
+    width: 50%;
+
+    border: solid;
+    border-width: 2px;
+    border-radius: 15px;
+    border-color: var(--laranja-gt);
+    padding: 20px;
+
+    flex-direction: column;
+
+    background-color: #2c2c2c;
+    box-shadow: 0px 0px 5px 3px #4b4b4b;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#btn-tst-criar-dietas {
+    box-sizing: border-box;
+    margin-top: 15px;
+
+    color: white;
+    font-weight: bold;
+    background-color: var(--laranja-gt);
+    
+    border-style: solid;
+    border-radius: 5px;
+    border-color: var(--laranja-gt);
+
+    height: 35px;
+}
+
+#container-criar-dieta input {
+    border-color: #ff6600;
+    border-style: solid;
+    border-radius: 5px;
+    background-color: #525252;
+    color: white;
+    padding: 5px;
+}
+
+#container-criar-dieta label {
+    font-weight: bold;
+}
+
+/*Fim*/
+
+/*Media Query*/
+
+/* Media query para telas pequenas */
+@media (max-width: 599px) {
+    #container-criar-dieta {
+        width: 70%;
+    }
+}
+/*Fim*/
+
+.criacao-aux {
+    display: flex;
+    justify-content: space-between; /* Distribui o espaço entre os itens */
+    align-items: center; /* Alinha verticalmente os itens no centro */
+}
+
+.criacao-aux #fechar-criacao {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#fechar-criacao:hover{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*Fim*/

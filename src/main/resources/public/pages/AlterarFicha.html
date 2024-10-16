@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alterar ficha - GymTracker</title>
+    <link rel="stylesheet" href="../assets/css/AlterarFicha.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+    </style>
+    <script src="https://kit.fontawesome.com/25359709ac.js" crossorigin="anonymous"></script>
+    <script src="../assets/js/AlterarFicha.js"></script>
+</head>
+<body>
+    <div class="topo-voltar">
+        <a href=""><i class="fa-solid fa-right-from-bracket fa-2x"></i></a>
+    </div>
+    <div class="container-fichas">
+        <div class="subcontainer-fichas">
+            <h2>Selecione uma ficha</h2>
+            <form action="">
+                <div class="lista-fichas">
+                    <label class="ficha" for="1">
+                        <input type="radio" id="1" name="id-ficha" value="1"/>
+                        <span>Ficha 1</span>
+                    </label>
+                    <label class="ficha" for="2">
+                        <input type="radio" id="2" name="id-ficha" value="2"/>
+                        <span>Ficha 2</span>
+                    </label>
+                    <label class="ficha" for="3">
+                        <input type="radio" id="3" name="id-ficha" value="3"/>
+                        <span>Ficha 3</span>
+                    </label>
+                    <label class="ficha" for="4">
+                        <input type="radio" id="4" name="id-ficha" value="4"/>
+                        <span>Ficha 4</span>
+                    </label>
+                    <label class="ficha" for="5">
+                        <input type="radio" id="5" name="id-ficha" value="5"/>
+                        <span>Ficha 5</span>
+                    </label>
+                    <label class="ficha" for="6">
+                        <input type="radio" id="6" name="id-ficha" value="6"/>
+                        <span>Ficha 6</span>
+                    </label>
+                </div>
+
+                <div class="container-btn">
+                    <div class="btn-fichas">
+                        <input type="submit" value="Confirmar" id="btn-confirmar">
+                    </div>
+                    <div class="btn-fichas">
+                        <input type="submit" value="Editar ficha" id="btn-editar-ficha">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <div class="teste">
+        <button id="btn-tst-criar-lista" onclick="criarListaDeFichas()">Criar lista localstorage/esvaziar</button><br>
+        <button id="btn-tst-listar-fichas" onclick="listarFichas()">Listar fichas</button><br>
+        <label for="tst-nome-ficha">Nome da ficha:</label>
+        <input type="text" id="tst-nome-ficha"><br>
+        <button id="btn-tst-adicionar-ficha" onclick="criarFicha()">Adicionar ficha</button>
+    </div>
+</body>
+</html>
