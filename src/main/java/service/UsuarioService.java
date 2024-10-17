@@ -28,15 +28,16 @@ public class UsuarioService {
 	        String senha = request.queryParams("senha");
 
 	        // Validações
-	        if (nome == null || nome.isEmpty()) {
-	            response.status(400);
-	            return "Nome não pode ser vazio.";
-	        }
+	        if (nome == null || nome.isEmpty() || nome.length() > 50 || !nome.matches("^[A-Za-z ]+$")) {
+    		    response.status(400);
+    		    return "Nome deve ter até 50 caracteres e conter apenas letras e espaços.";
+		}
 
-	        if (email == null || email.isEmpty()) {
-	            response.status(400);
-	            return "Email não pode ser vazio.";
-	        }
+	        String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$";
+		if (email == null || email.isEmpty() || !email.matches(emailRegex)) {
+    		    response.status(400);
+    		    return "Email inválido.";
+		}
 
 	        if (senha == null || senha.isEmpty()) {
 	            response.status(400);
