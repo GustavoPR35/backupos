@@ -51,6 +51,12 @@ body {
     margin-top: 0px;
 }
 
+#mensagem-aviso {
+    color: red;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
 /*Fim*/
 
 #form-login label { /*Nomes dos campos*/

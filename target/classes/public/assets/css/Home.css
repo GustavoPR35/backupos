@@ -175,8 +175,7 @@ main {
     margin-bottom: 20px;
 }
 
-
-#user-details h2, #user-details p, #exercise-list h3 {
+#user-details h2, #exercise-list h3 {
     margin-bottom: 10px;
     color: #ff6600; 
 }
@@ -333,3 +332,63 @@ footer {
     background-color: rgba(255, 102, 0, 0.3);
     border-radius: 50%;
 }
+
+/* ALTERAÇÕES NOVAS */
+#aux-user-info {
+    justify-content: center;
+    display: flex;
+    gap: 0.5rem;
+
+    margin-bottom: 0.5rem;
+}
+
+#aux-user-info .user-presentation,
+#aux-user-info .user-personalInfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1; /* Distribui o espaço de forma igualitária */
+    min-width: 0; /* Garante que os elementos possam encolher */
+
+    border-radius: 10px;
+    background-color: cornflowerblue;
+
+    padding: 20px;
+}
+
+#aux-user-info .user-personalInfo {
+    flex-direction: column;
+    gap: 0.5rem;
+    color: white;
+    font-weight: bold;
+}
+
+#user-aux-imc {
+    background-color: cadetblue;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: bold;
+    color: white;
+
+    border-radius: 5px;
+    
+    margin-bottom: 0.5rem;
+    padding: 15px;
+}
+
+#btns-user-info {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+#btns-user-info button {
+    width: 50%;
+    flex-grow: 1;
+}
+
+/* FIM */

@@ -14,7 +14,8 @@
         <div class="caixa-logo"></div>
         <div id="subcontainer-login">
             <h2>Login</h2>
-            <form action="/usuario/login" method="POST" id="form-login">
+            <div id="mensagem-aviso"></div> <!-- Mensagem de erro aparece aqui -->
+            <form action="/usuario/login" id="form-login" onsubmit="verificarLogin(event)">
                 <div class="campo-login">
                     <label for="email-login">Email:</label><br>
                     <input type="text" id="email-login" name="login" required><br>
@@ -32,5 +33,6 @@
             </form>
         </div>
     </div>
+    <script src="../assets/js/Login.js"></script>
 </body>
 </html>
