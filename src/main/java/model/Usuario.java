@@ -1,7 +1,10 @@
 package model;
+import java.sql.Date;
+
 import org.mindrot.jbcrypt.BCrypt;
 
-public class Usuario {
+// Final pra evitar que a classe seja estendida e o método setSenha() seja sobrescrito, já que ele é usado nos construtores
+public final class Usuario {
 	
 	/*
 	 * Atributos
@@ -10,7 +13,7 @@ public class Usuario {
 	private String nome;
 	private String email;
 	private String senha;
-	private int idade;
+	private Date dataNascimento;
 	private double altura;
 	private double peso;
 	
@@ -22,7 +25,7 @@ public class Usuario {
 		this.nome = "";
 		this.email = "";
 		this.senha = "";
-		this.idade = -1;
+		this.dataNascimento = new Date(System.currentTimeMillis()); // Inicializa com a data atual
 		this.altura = -1;
 		this.peso = -1;
 	}
@@ -33,17 +36,17 @@ public class Usuario {
 		setSenha(senha);
 	}
 	
-	public Usuario(int id, String nome, String email, String senha, int idade, double altura, double peso) {
+	public Usuario(int id, String nome, String email, String senha, Date dataNascimento, double altura, double peso) {
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		setSenha(senha);
-		this.idade = idade;
+		this.dataNascimento = dataNascimento;
 		this.altura = altura;
 		this.peso = peso;
 	}
 	
-	public Usuario(int id, String nome, String email, String senhaHash, int idade, double altura, double peso, boolean senhaJaHash) {
+	public Usuario(int id, String nome, String email, String senhaHash, Date dataNascimento, double altura, double peso, boolean senhaJaHash) {
 	    this.id = id;
 	    this.nome = nome;
 	    this.email = email;
@@ -55,7 +58,7 @@ public class Usuario {
 	        setSenha(senha);
 	    }
 	    
-	    this.idade = idade;
+	    this.dataNascimento = dataNascimento;
 	    this.altura = altura;
 	    this.peso = peso;
 	}
@@ -95,12 +98,12 @@ public class Usuario {
 		this.senha = hashSenha(senha);
 	}
 
-	public int getIdade() {
-		return idade;
+	public Date getDataNascimento() {
+		return dataNascimento;
 	}
 
-	public void setIdade(int idade) {
-		this.idade = idade;
+	public void setIdade(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
 	}
 
 	public double getAltura() {
@@ -131,8 +134,8 @@ public class Usuario {
 	}
 	
 	public void imprimir() {
-	    System.out.printf("Id: %d, Nome: %s, Email: %s, Senha: [vai ver nao dog], Idade: %d, Altura: %.2f, Peso: %.2f%n", 
-	                      getId(), getNome(), getEmail(), getIdade(), getAltura(), getPeso());
+	    System.out.printf("Id: %d, Nome: %s, Email: %s, Senha: [vai ver nao dog], Data de nascimento: %s, Altura: %.2f, Peso: %.2f%n", 
+	                      getId(), getNome(), getEmail(), getDataNascimento(), getAltura(), getPeso());
 	}
 	
 }

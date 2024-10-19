@@ -33,13 +33,23 @@
     <main>
         <section id="user-info">
             <div id="user-details">
-                <h2><i class="bi bi-person"></i> Nome: <span id="user-name">Fulano</span></h2>
-                <p>Peso: <span id="user-weight">75 kg</span></p>
-                <p>Altura: <span id="user-height">1.75 m</span></p>
-                <p>Idade: <span id="user-age">28 anos</span></p>
-                <p>IMC: <span id="user-imc"></span></p>
-                <button id="edit-info" onclick="window.location.href='Perfil.html'"><i class="bi bi-pencil"></i> Alterar info</button>
-                <button id="diet-button" onclick="window.location.href='SelecaoDieta.html'"><i class="fas fa-apple-alt"></i> Dieta</button>
+                <div id="aux-user-info">
+                    <div class="user-presentation">
+                        <h3>Olá, <span id="user-name">Fulano</span>!</h3>
+                    </div>
+                    <div class="user-personalInfo">
+                        <p><span id="user-weight">75 kg</span></p>
+                        <p><span id="user-height">1.75 m</span></p>
+                    </div>
+                </div>
+                <div id="user-aux-imc">
+                    <p>IMC: <span id="user-imc">uou</span></p>
+                </div>
+                <!--<p>Idade: <span id="user-age">28 anos</span></p>-->
+                <div id="btns-user-info">
+                    <button id="edit-info" onclick="window.location.href='Perfil.html'"><i class="bi bi-pencil"></i> Modificar</button>
+                    <button id="diet-button" onclick="window.location.href='SelecaoDieta.html'"><i class="fas fa-apple-alt"></i> Dieta</button>
+                </div>
             </div>
         </section>
         <section id="exercise-schedule">

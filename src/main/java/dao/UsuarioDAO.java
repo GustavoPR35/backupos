@@ -1,6 +1,9 @@
 package dao;
 
-import java.sql.*;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,9 +16,10 @@ public class UsuarioDAO extends DAO{
 		conectar();
 	}
 	
-	public void finalize() {
-		close();
-	}
+	@Override
+    public void close() {
+        super.close();
+    }
 	
 	public int insert(Usuario usuario) {
 		int generatedId = -1;
@@ -53,12 +57,13 @@ public class UsuarioDAO extends DAO{
 			ResultSet rs = pst.executeQuery();
 			
 			if (rs.next()) {
+				Date dataNascimento = rs.getDate("data_nascimento");		
 				usuario = new Usuario(
 						rs.getInt("id_usuario"),
 						rs.getString("nome"),
 						rs.getString("email"),
 						rs.getString("senha"),
-						rs.getInt("idade"),
+						dataNascimento,
 						rs.getDouble("altura"),
 						rs.getDouble("peso")
 						);
@@ -79,30 +84,16 @@ public class UsuarioDAO extends DAO{
 	        
 	        try (ResultSet rs = pst.executeQuery()) {
 	            if (rs.next()) {
-	                // Validação adicional para evitar possíveis erros de valores nulos
-	                int idade = rs.getInt("idade");
-	                if (rs.wasNull()) {
-	                    idade = 0; // Valor padrão para idade
-	                }
-
-	                double altura = rs.getDouble("altura");
-	                if (rs.wasNull()) {
-	                    altura = 0.0; // Valor padrão para altura
-	                }
-
-	                double peso = rs.getDouble("peso");
-	                if (rs.wasNull()) {
-	                    peso = 0.0; // Valor padrão para peso
-	                }
+	            	Date dataNascimento = rs.getDate("data_nascimento");
 
 	                usuario = new Usuario(
 	                    rs.getInt("id_usuario"),
 	                    rs.getString("nome"),
 	                    rs.getString("email"),
 	                    rs.getString("senha"),
-	                    idade,
-	                    altura,
-	                    peso,
+	                    dataNascimento,
+	                    rs.getDouble("altura"),
+                        rs.getDouble("peso"),
 	                    true // Senha já vem hashada do pgsql
 	                );
 	            }
@@ -117,14 +108,14 @@ public class UsuarioDAO extends DAO{
 	
 	public boolean update(Usuario usuario) {
 	    boolean status = false;
-	    String sql = "UPDATE usuario SET nome = ?, email = ?, senha = ?, idade = ?, altura = ?, peso = ? WHERE id_usuario = ?";
+	    String sql = "UPDATE usuario SET nome = ?, email = ?, senha = ?, data_nascimento = ?, altura = ?, peso = ? WHERE id_usuario = ?";
 
 	    try (PreparedStatement pst = conexao.prepareStatement(sql)) {
 	        // Definindo os valores dos parâmetros
 	        pst.setString(1, usuario.getNome());
 	        pst.setString(2, usuario.getEmail());
 	        pst.setString(3, usuario.getSenha()); // já hashada
-	        pst.setInt(4, usuario.getIdade());
+	        pst.setDate(4, usuario.getDataNascimento());
 	        pst.setDouble(5, usuario.getAltura());
 	        pst.setDouble(6, usuario.getPeso());
 	        pst.setInt(7, usuario.getId()); // ID do usuário a ser atualizado
@@ -158,7 +149,7 @@ public class UsuarioDAO extends DAO{
 	}
 	
 	public List<Usuario> listar() {
-		List<Usuario> usuarios = new ArrayList<Usuario>();
+		List<Usuario> usuarios = new ArrayList<>();
 		String sql = "SELECT * FROM usuario";
 		
 		try (PreparedStatement pst = conexao.prepareStatement(sql)){
@@ -169,7 +160,7 @@ public class UsuarioDAO extends DAO{
 						rs.getString("nome"), 
 						rs.getString("email"), 
 						rs.getString("senha"), 
-						rs.getInt("idade"), 
+						rs.getDate("data_nascimento"), 
 						rs.getDouble("altura"), 
 						rs.getDouble("peso"), 
 						true // Senha já hashada
@@ -180,38 +171,6 @@ public class UsuarioDAO extends DAO{
 			System.err.println("Erro ao tentar buscar usuários: " + e.getMessage());
 		}
 		return usuarios;
-	}
-	
-	public void testeLista() {
-		try {
-			Statement st = conexao.createStatement();
-			String sql = "SELECT * FROM usuario";
-			System.out.println(sql);
-			ResultSet rs = st.executeQuery(sql);
-			
-			// Processar o ResultSet
-	        while (rs.next()) {
-	            // Obter dados usando rs.getXXX()
-	            int idUsuario = rs.getInt("id_usuario");
-	            String nome = rs.getString("nome");
-	            String email = rs.getString("email");
-	            String senha = rs.getString("senha");
-	            int idade = rs.getInt("idade");
-	            double altura = rs.getDouble("altura");
-	            double peso = rs.getDouble("peso");
-	            
-	            // Exibir os dados
-	            System.out.println("ID: " + idUsuario + ", Nome: " + nome + ", Email: " + email + ", Senha: " + senha +
-	                               ", Idade: " + idade + ", Altura: " + altura + ", Peso: " + peso);
-	        }
-	        
-	        // Fechar o ResultSet e o Statement
-	        rs.close();
-	        st.close();
-		}
-		catch (SQLException u) {
-			throw new RuntimeException(u);
-		}
 	}
 	
 }

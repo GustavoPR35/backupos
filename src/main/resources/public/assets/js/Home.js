@@ -208,14 +208,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', function() {
     // Verifica se os dados do perfil estão armazenados no localStorage
-    const perfil = JSON.parse(localStorage.getItem('perfil'));
+    const perfil = JSON.parse(localStorage.getItem('usuarioLogado'));
 
     if (perfil) {
+        //const idade = calcularIdade(new Date(perfil.dataNascimento));
+        const imc = calcularIMC(perfil.peso, perfil.altura);
+        const primeiroNome = perfil.nome.split(' ')[0];
+
         // Atualiza o conteúdo da página com os dados do perfil
-        document.getElementById('user-name').textContent = perfil.nome;
-        document.getElementById('user-weight').textContent = perfil.peso + ' kg';
+        document.getElementById('user-name').textContent = primeiroNome;
         document.getElementById('user-height').textContent = perfil.altura + ' m';
-        document.getElementById('user-age').textContent = perfil.idade + ' anos';
-        document.getElementById('user-imc').textContent = perfil.imc
+        document.getElementById('user-weight').textContent = perfil.peso + ' kg';
+        //document.getElementById('user-age').textContent = idade + ' anos';
+        document.getElementById('user-imc').textContent = imc.toFixed(2);
     }
 });
+
+function calcularIdade(dataNascimento) {
+    const hoje = new Date();
+    let idade = hoje.getFullYear() - dataNascimento.getFullYear();
+    const mes = hoje.getMonth() - dataNascimento.getMonth();
+    if (mes < 0 || (mes === 0 && hoje.getDate() < dataNascimento.getDate())) {
+        idade--;
+    }
+    return idade;
+}
+
+function calcularIMC(peso, altura) {
+    return peso / (altura * altura);
+}

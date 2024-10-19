@@ -1,14 +1,16 @@
 package app;
 
-import static spark.Spark.*;
-
 import service.UsuarioService;
+import static spark.Spark.port;
+import static spark.Spark.post;
+import static spark.Spark.staticFiles;
 
 public class Aplicacao {
 	
-	private static UsuarioService usuarioService = new UsuarioService();
+	private static final UsuarioService usuarioService = new UsuarioService();
 	
 	public static void main(String[] args) {
+		
 		port(4919);
 		
 		staticFiles.externalLocation("src/main/resources/public");

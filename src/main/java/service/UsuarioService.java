@@ -1,5 +1,7 @@
 package service;
 
+import com.google.gson.JsonObject;
+
 import dao.UsuarioDAO;
 import model.Usuario;
 import spark.Request;
@@ -7,7 +9,7 @@ import spark.Response;
 
 public class UsuarioService {
 
-	private UsuarioDAO usuarioDAO;
+	private final UsuarioDAO usuarioDAO;
 	
 	public UsuarioService() {
 		this.usuarioDAO = new UsuarioDAO();
@@ -21,7 +23,6 @@ public class UsuarioService {
 	 * Cadastrar usuário
 	 */
 	public Object add(Request request, Response response) {
-	    int idGerado = -1; // Corrigido para 'idGerado' com letra minúscula
 	    try {
 	        String nome = request.queryParams("nome");
 	        String email = request.queryParams("login");
@@ -45,8 +46,9 @@ public class UsuarioService {
 	        }
 
 	        Usuario usuario = new Usuario(nome, email, senha);
-	        idGerado = usuarioDAO.insert(usuario); // Insere o usuário e obtém o ID gerado
+	        int idGerado = usuarioDAO.insert(usuario); // Insere o usuário e obtém o ID gerado
 
+			// O insert retorna -1 se houver algum erro ao inserir o usuário
 	        if (idGerado != -1) {
 	            response.status(201); // Status HTTP 201 Created
 	            response.redirect("/pages/Login.html");
@@ -78,7 +80,7 @@ public class UsuarioService {
 			// Verifica se os parâmetros foram fornecidos
 	        if (email == null || email.isEmpty() || senhaFornecida == null || senhaFornecida.isEmpty()) {
 	            response.status(400); // Bad Request - parâmetros faltando
-	            return "Parâmetros de login ou senha faltando.";
+	            return criarRespostaJson("Parâmetros de login ou senha faltando.");
 	        }
 			
 			Usuario usuario = usuarioDAO.getByEmail(email);
@@ -86,22 +88,44 @@ public class UsuarioService {
 			if (usuario != null) {
 				if (usuario.verificarSenha(senhaFornecida)) {
 					response.status(200); // OK
-					response.redirect("/pages/Home.html");
-					return null;
+					return criarRespostaJsonUsuario("Login bem-sucedido", usuario);
 				}
 				else {
 					response.status(401); // Unauthorized
-					return "Senha incorreta";
+					return criarRespostaJson("Senha incorreta");
 				}
 			}
 			else {
 				response.status(404); // Not Found
-				return "Usuário não encontrado";
+				return criarRespostaJson("Usuário incorreto");
 			}
 		} catch (Exception e) {
 			response.status(500);
-			return "Erro ao efetuar login: " + e.getMessage();
+			return criarRespostaJson("Erro ao efetuar login: " + e.getMessage());
 		}
 	}
 
+	/*
+	 * Método pra dar uma resposta em JSON pra cada caso
+	*/
+	private String criarRespostaJson(String mensagem) {
+        JsonObject json = new JsonObject();
+        json.addProperty("mensagem", mensagem);
+        return json.toString();
+    }
+
+	/*
+	 * Método pra quando o login for bem-sucedido
+	 */
+	private String criarRespostaJsonUsuario(String mensagem, Usuario usuario) {
+        JsonObject json = new JsonObject();
+        json.addProperty("mensagem", mensagem);
+        json.addProperty("id", usuario.getId());
+        json.addProperty("nome", usuario.getNome());
+        json.addProperty("email", usuario.getEmail());
+		json.addProperty("altura", usuario.getAltura());
+		json.addProperty("peso", usuario.getPeso());
+		json.addProperty("dataNascimento", (usuario.getDataNascimento()).toString());
+        return json.toString();
+    }
 }
